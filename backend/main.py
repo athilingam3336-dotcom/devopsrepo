@@ -23,7 +23,9 @@ bind=engine
 Base = declarative_base()
 
 class DataEntry(Base):
-**tablename** = "data_entries"
+    __tablename__ = "data_entries"
+
+    id = Column(Integer, primary_key=True)
 
 ```
 id = Column(Integer, primary_key=True, index=True)
