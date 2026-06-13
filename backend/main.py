@@ -20,9 +20,9 @@ Base = declarative_base()
 
 class DataEntry(Base):
     __tablename__ = "data_entries"
-    id        = Column(Integer, primary_key=True, index=True)
-    name      = Column(String, nullable=False)
-    message   = Column(String, nullable=False)
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+    message = Column(String, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
 
 
