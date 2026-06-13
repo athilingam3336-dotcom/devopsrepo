@@ -1,8 +1,8 @@
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, text
-from sqlalchemy.orm import declarative_base          # fix 4: moved from ext.declarative
+from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 from datetime import datetime
 import os
@@ -23,11 +23,11 @@ Base = declarative_base()
 
 
 class DataEntry(Base):
-    __tablename__ = "data_entries"          # fix 1: double underscores added
+    __tablename__ = "data_entries"
 
-    id         = Column(Integer, primary_key=True, index=True)
-    name       = Column(String, nullable=False)
-    message    = Column(String, nullable=False)
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+    message = Column(String, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
 
 
@@ -58,8 +58,8 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],                    # fix 2: wildcard restored
-    allow_methods=["*"],                    # fix 3: wildcard restored
+    allow_origins=["*"],
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
